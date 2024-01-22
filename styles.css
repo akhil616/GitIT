@@ -33,6 +33,7 @@ header img {
 nav {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 ul {
   list-style: none;
@@ -185,8 +186,13 @@ button:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
-
+#paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .pagination button {
   padding: 8px 12px;
   font-size: 14px;
@@ -237,6 +243,15 @@ button:hover {
   }
   .logo span {
     display: none;
+  }
+
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination button {
+    padding: 4px 8px;
+    font-size: 12px;
   }
   /* 
   #profileContainer img {
