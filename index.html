@@ -16,7 +16,7 @@
         </div>
       </a>
       <nav>
-        WebApp to search for GitHub Profiles and checkout thier repositories
+        WebApp to search for GitHub Profiles and checkout their repositories
       </nav>
     </header>
     <div class="container">
@@ -28,6 +28,9 @@
           placeholder="Enter GitHub Username"
         />
         <button onclick="getUserData()">Search</button>
+      </div>
+      <div id="backToSearch" class="hidden">
+        <button onclick="backToSearch()">&larr; Back to Search</button>
       </div>
       <div id="profileContainer"></div>
       <div id="repoContainer"></div>

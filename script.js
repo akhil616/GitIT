@@ -9,6 +9,15 @@ document
       getUserData();
     }
   });
+
+function backToSearch() {
+  document.getElementById("profileContainer").innerHTML = "";
+  document.getElementById("repoContainer").innerHTML = "";
+  document.getElementById("paginationContainer").innerHTML = "";
+  toggleSearchBox(true);
+  document.getElementById("backToSearch").classList.add("hidden");
+}
+
 function displayUserData(userData) {
   const profileContainer = document.getElementById("profileContainer");
   if (userData.message === "Not Found") {
@@ -109,6 +118,7 @@ async function getUserData() {
         }
       );
       const repos = await repoList.json();
+      document.getElementById("backToSearch").classList.remove("hidden");
       displayUserData(userData);
       displayRepoData(repos, userData);
       displayPagination(userData.public_repos);
@@ -210,5 +220,5 @@ function changePerPage() {
 
 function toggleSearchBox(show) {
   const searchContainer = document.getElementById("searchContainer");
-  searchContainer.style.display = show ? "block" : "none";
+  searchContainer.style.display = show ? "flex" : "none";
 }

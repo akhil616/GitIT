@@ -4,8 +4,8 @@ A web application that Allows user to search for GitHub profiles and view the de
 
 ## How to run locally
 
-Just git clone or download and run with live server.
+Just git clone or download and run with live server but make sure to add your own GitHub access token.
 
 ## Hosted on Netlify
 
-Live URL: https://
+Live URL: https://gitit-demo.netlify.app/
