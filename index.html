@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.ico" />
+    <title>GitIT | Checkout GitHub Profiles</title>
+  </head>
+  <body>
+    <header>
+      <a href="/index.html">
+        <div class="logo">
+          <img src="img/gitit-logo.png" alt="gitit-logo" />
+          <span>GitIT</span>
+        </div>
+      </a>
+      <nav>
+        WebApp to search for GitHub Profiles and checkout thier repositories
+      </nav>
+    </header>
+    <div class="container">
+      <div id="searchContainer">
+        <input
+          type="text"
+          id="usernameInput"
+          placeholder="Enter GitHub Username"
+        />
+        <button onclick="getUserData()">Search</button>
+      </div>
+      <div id="profileContainer"></div>
+      <div id="repoContainer"></div>
+      <div id="loading"></div>
+      <div id="paginationContainer"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

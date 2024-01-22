@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;700&display=swap");
+
+body {
+  font-family: outfit, sans-serif;
+  background-color: #2b3137;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #141414;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2em;
+  font-weight: 501;
+}
+
+header img {
+  width: 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li {
+  padding: 5px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px 200px;
+  padding: 20px;
+  background-color: #2b3137;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 0 10px rgb(0 0 0 / 31%);
+}
+
+.container button {
+  margin-left: 5px;
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 37px;
+}
+
+#searchContainer button {
+  display: inline;
+}
+
+input {
+  padding: 10px;
+  display: inline-block;
+  width: 40%;
+  border: 1px solid #333;
+  border-radius: 4px;
+  /* box-sizing: border-box; */
+  background-color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: 1em;
+  font-weight: 501;
+  outline: none;
+  color: #000;
+}
+
+button {
+  background-color: #141414;
+  border: none;
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 12px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: "Outfit", sans-serif;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+button:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+/* button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+} */
+
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #9c41f2;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+#loading.display {
+  visibility: visible;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#profileContainer {
+  display: flex;
+  margin-top: 20px;
+}
+#profileContainer img {
+  width: 70%;
+  border-radius: 20px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  margin: 20px 30px;
+  padding: 20px;
+  background-color: #2b3137;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 0 10px rgb(0 0 0 / 31%);
+}
+
+.list span {
+  background-color: #141414;
+  border: none;
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 8px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.7em;
+  font-family: "Outfit", sans-serif;
+}
+
+#repoContainer {
+  margin-top: 20px;
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin: 0;
+  cursor: pointer;
+  background-color: #141414;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.pagination button:hover {
+  background-color: #141414;
+}
+
+.pagination span {
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+@media only screen and (max-width: 950px) {
+  .container {
+    margin: 50px 50px;
+  }
+  .list {
+    margin: 20px 0;
+  }
+
+  /* #profilecontainer img {
+    display: inline-block;
+  } */
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    margin: 50px 50px;
+  }
+  .list {
+    margin: 20px 0;
+  }
+  #profileContainer {
+    flex-direction: column;
+  }
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo span {
+    display: none;
+  }
+  /* 
+  #profileContainer img {
+    display: none;
+  } */
+}
