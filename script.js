@@ -2,9 +2,6 @@ let currentPage = 1;
 let perPage = 10; // Number of repositories per page
 let maxDisplayedPages = 10; // Max no. of pages
 
-const TOKEN =
-  "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";
-
 document
   .getElementById("usernameInput")
   .addEventListener("keyup", function (event) {
