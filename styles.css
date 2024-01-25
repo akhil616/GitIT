@@ -66,6 +66,7 @@ li {
   align-items: center;
   justify-content: center;
   margin-top: 37px;
+  flex-wrap: wrap;
 }
 
 #searchContainer button {
@@ -151,6 +152,10 @@ button:hover {
 #profileContainer img {
   width: 70%;
   border-radius: 20px;
+}
+
+.details a:hover {
+  color: lightgrey;
 }
 
 .avatar {
@@ -261,4 +266,11 @@ button:hover {
   #profileContainer img {
     display: none;
   } */
+}
+
+@media only screen and (max-width: 600px) {
+  #searchContainer input {
+    /* display: block; */
+    width: 70%;
+  }
 }

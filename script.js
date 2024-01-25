@@ -2,6 +2,10 @@ let currentPage = 1;
 let perPage = 10; // Number of repositories per page
 let maxDisplayedPages = 10; // Max no. of pages
 
+// Access TOKEN to bypass GitHub Limit
+const TOKEN = "YOUR_TOKEN_HERE";
+
+// Enter key event to search
 document
   .getElementById("usernameInput")
   .addEventListener("keyup", function (event) {
@@ -10,6 +14,7 @@ document
     }
   });
 
+// Back to Search Functionality
 function backToSearch() {
   document.getElementById("profileContainer").innerHTML = "";
   document.getElementById("repoContainer").innerHTML = "";
@@ -18,6 +23,7 @@ function backToSearch() {
   document.getElementById("backToSearch").classList.add("hidden");
 }
 
+// Displaying User Data
 function displayUserData(userData) {
   const profileContainer = document.getElementById("profileContainer");
   if (userData.message === "Not Found") {
@@ -28,20 +34,33 @@ function displayUserData(userData) {
       `;
     return;
   }
+  const url = userData.twitter_username
+    ? `twitter: <a href=https://twitter.com/${userData.twitter_username} target=_blank>https://twitter.com/${userData.twitter_username}</a>`
+    : "";
+
+  const loc = userData.location ? `Location: ${userData.location}` : "";
   profileContainer.innerHTML = `
         <div class="avatar">
         <img src="${userData.avatar_url}" alt="${userData.login} Avatar">
         </div>
         <div class="details">
         <h2>${userData.name}</h2>
-        <p>${userData.bio || "Not specified"}</p>
-        <span>Followers: ${userData.followers}&nbsp</span>
+        <p>${userData.bio || "<No Bio>"}</p>
+        <p><span>Followers: ${userData.followers}&nbsp</span>
         <span>Following: ${userData.following}&nbsp</span>
-        <span>Repositories: ${userData.public_repos}&nbsp</span>
+        <span>Repositories: ${userData.public_repos}&nbsp</span></p>
+        <p>
+          <span>${loc}</span>&nbsp
+          <span>${url}</span>
+          </p>
+        <p>Url: <a href=${userData.html_url} target= _blank>${
+    userData.html_url
+  }</p>
         </div>
     `;
 }
 
+// Displaying Repositories Data
 function displayRepoData(repos, userData) {
   const repoContainer = document.getElementById("repoContainer");
   repoContainer.innerHTML = `<h2>Latest Repositories: </h2>`;
@@ -56,6 +75,7 @@ function displayRepoData(repos, userData) {
   }
   if (repos.length > 0) {
     repos.forEach(async (repo) => {
+      // Fetching for Languages used in the Repository
       const repoLang = await fetch(
         `https://api.github.com/repos/${userData.login}/${repo.name}/languages`,
         {
@@ -84,6 +104,7 @@ function displayRepoData(repos, userData) {
   }
 }
 
+// Displaying Error
 function displayError(message) {
   const profileContainer = document.getElementById("profileContainer");
   const repoContainer = document.getElementById("repoContainer");
@@ -92,6 +113,7 @@ function displayError(message) {
   repoContainer.innerHTML = "";
 }
 
+// Fetching User Data
 async function getUserData() {
   const username = document.getElementById("usernameInput").value;
   const loader = document.querySelector("#loading");
@@ -107,8 +129,9 @@ async function getUserData() {
           },
         }
       );
+
+      // Fetching Repo List
       const userData = await userProfile.json();
-      // perPage = parseInt(document.getElementById("perPageSelect").value, 10);
       const repoList = await fetch(
         `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${currentPage}`,
         {
@@ -120,6 +143,7 @@ async function getUserData() {
       const repos = await repoList.json();
       document.getElementById("backToSearch").classList.remove("hidden");
       displayUserData(userData);
+      console.log(userData);
       displayRepoData(repos, userData);
       displayPagination(userData.public_repos);
       toggleSearchBox(false);
@@ -134,6 +158,7 @@ async function getUserData() {
   }
 }
 
+// Pagination Functionality
 function displayPagination(repoCount) {
   const paginationContainer = document.getElementById("paginationContainer");
   paginationContainer.innerHTML = "";
@@ -176,9 +201,6 @@ function displayPagination(repoCount) {
       });
       paginationDiv.appendChild(pageButton);
     }
-    // const pageInfo = document.createElement("span");
-    // pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-    // paginationDiv.appendChild(pageInfo);
 
     if (currentPage < totalPages) {
       const nextButton = document.createElement("button");
@@ -208,16 +230,17 @@ function displayPagination(repoCount) {
     paginationDiv.appendChild(perPageSelect);
 
     paginationContainer.appendChild(paginationDiv);
-    // repoContainer.appendChild(paginationDiv);
   }
 }
 
+// For changing No. of Repositories per page
 function changePerPage() {
   perPage = parseInt(document.getElementById("perPageSelect").value, 10);
   currentPage = 1;
   getUserData();
 }
 
+// Toggle Search box
 function toggleSearchBox(show) {
   const searchContainer = document.getElementById("searchContainer");
   searchContainer.style.display = show ? "flex" : "none";
